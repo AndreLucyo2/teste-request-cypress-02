@@ -2,6 +2,8 @@
 /// <reference types='cypress'/>
 describe('Basic Test API #1', () => {
 
+
+
     it('BODY teste Length - TESTE', () => {
 
         //Teste se o tamanho da body da resposta da API esta com o tamanho esperado
@@ -38,7 +40,7 @@ describe('Basic Test API #1', () => {
     });
 
 
-    it.only('Valida o SCHEMA do Json retorna conforme prometido na requisição', () => {
+    it('Valida o SCHEMA do Json retorna conforme prometido na requisição', () => {
 
         cy.request('https://fakerestapi.azurewebsites.net/api/v1/Books')
             .its('body') //Acessa ...
@@ -49,5 +51,23 @@ describe('Basic Test API #1', () => {
     });
 
 
+
+    //Cria um alias usando a função que retorna a url para evitar repetir o link:
+    beforeEach(function () {
+        cy.request('GET', 'https://fakerestapi.azurewebsites.net/api/v1/Books').as('geral')
+    })
+
+
+    it.only('Using alias para link da rquisição - TESTE', function () {
+
+        //Usando o Alias da URL criado acima:
+        cy.get('@geral').should(repose => {
+
+            expect(response.body).to.have.length(200)
+            expect(response).to.have.property('headers')
+            expect(response).to.have.property('duration')
+
+        })
+    });
 
 });
