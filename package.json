@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AndreLucyo2/teste-request-cypress-02/issues"
   },
-  "homepage": "https://github.com/AndreLucyo2/teste-request-cypress-02#readme"
+  "homepage": "https://github.com/AndreLucyo2/teste-request-cypress-02#readme",
+  "devDependencies": {
+    "cypress": "^9.5.3"
+  }
 }
